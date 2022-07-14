@@ -28,6 +28,3 @@ class SeoulTech():
             print(f'New announcement : {self.get_title()}')
             return True
     
-S = SeoulTech()
-print(S.get_title())
-S.save_title_of_announcement()
