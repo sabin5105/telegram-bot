@@ -1,5 +1,9 @@
+from pydoc import doc
 import telegram
 import json
+import time
+
+import scrapper
 
 TOKEN = None
 chat_id = []
@@ -10,5 +14,14 @@ with open("token_ID.json", "r") as ti:
     
 bot = telegram.Bot(token=TOKEN)
 
-text_message = "Hello World"
-bot.sendMessage(chat_id=chat_id[0], text=text_message) # send message to chat_id
+Seoultech = scrapper.Seoultech()
+
+def main():
+    while(Seoultech.check_title_of_announcement()):
+        parse_data = Seoultech.get_title()
+        bot.sendMessage(chat_id=chat_id[0], text=parse_data)
+        time.wait(60)
+        
+
+if __name__ == "__main__":
+    main()
