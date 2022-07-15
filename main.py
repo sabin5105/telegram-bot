@@ -5,8 +5,10 @@ import time
 
 import scrapper
 
+
 TOKEN = None
 chat_id = []
+
 with open("token_ID.json", "r") as ti:
     ti = json.load(ti)
     TOKEN = ti["TOKEN"]
@@ -14,9 +16,11 @@ with open("token_ID.json", "r") as ti:
     
 bot = telegram.Bot(token=TOKEN)
 
-Seoultech = scrapper.Seoultech()
+
 
 def main():
+    Seoultech = scrapper.Seoultech()
+    
     while(Seoultech.check_title_of_announcement()):
         parse_data = Seoultech.get_title()
         bot.sendMessage(chat_id=chat_id[0], text=parse_data)
