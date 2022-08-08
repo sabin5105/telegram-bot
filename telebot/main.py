@@ -1,4 +1,3 @@
-from pydoc import doc
 import telegram
 import json
 import time
@@ -9,13 +8,14 @@ import scrapper
 TOKEN = None
 chat_id = []
 
+
 with open("token_ID.json", "r") as ti:
     ti = json.load(ti)
     TOKEN = ti["TOKEN"]
     chat_id.append(ti["CHAT_ID"])
     
-bot = telegram.Bot(token=TOKEN)
 
+bot = telegram.Bot(token=TOKEN)
 
 
 def main():
